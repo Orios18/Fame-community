@@ -1,0 +1,148 @@
+/*
+  Modern Telegram-inspired design.
+
+  1. We replaced the background with a subtle, pastel gradient.
+  2. The .page-container now has a glass-like (semi-transparent) background.
+  3. Buttons are more polished with small transitions and slight gradient.
+*/
+
+:root {
+  /* Try a gradient-friendly background color scheme, or fallback. */
+  --tg-theme-bg-color: linear-gradient(135deg, #1f506c 0%, #6ca3c9 100%);
+  --tg-theme-text-color: #0B2B40;
+  --tg-theme-hint-color: #657786;
+  --tg-theme-destructive-text-color: #FF4E4E;
+  /* secondary background for cards or containers: glass-like color */
+  --tg-theme-secondary-bg-color: rgb(255, 255, 255);
+
+  /* Telegram brand color variations */
+  --tg-theme-button-color: #229ED9;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-button-hover-color: #1b89bf;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  /* Subtle gradient background using our var. If we need fallback: #E7F5FE */
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  min-height: 100vh;
+  /* We might want a background-size for the gradient (optional) */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.app-wrapper {
+  /* The main container for the entire app. We rely on body’s gradient. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: var(--tg-theme-secondary-bg-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px); /* glass effect */
+  -webkit-backdrop-filter: blur(8px);
+  transition: box-shadow 0.3s ease;
+}
+
+.page-container:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Reusable button styles, more polished. */
+.button-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: linear-gradient(to right, #229ED9, #1b89bf);
+  color: var(--tg-theme-button-text-color);
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(34, 158, 217, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.button-link:hover {
+  background: linear-gradient(to right, #1b89bf, #1479a9);
+  transform: translateY(-2px);
+}
+
+.button-link:active {
+  transform: translateY(0);
+}
+
+/* Additional utility classes below (optional) */
+.section {
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.nft-gallery {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.nft-item {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.nft-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.news-list {
+  list-style-type: disc;
+  margin: 1rem 0 0 2rem;
+}
+
+.contact-form {
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}

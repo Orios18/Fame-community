@@ -1,0 +1,128 @@
+
+.hall-of-fame-container {
+    max-width: 900px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .loading-message,
+  .error-message,
+  .no-members-message {
+    color: var(--tg-theme-hint-color);
+    font-size: 1.2rem;
+    margin: 20px 0;
+  }
+  
+  .error-message {
+    color: var(--tg-theme-destructive-text-color);
+  }
+  
+  .members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 20px;
+  }
+  
+  .member-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .member-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  
+  .member-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--tg-theme-button-color);
+  }
+  
+  .member-info {
+    text-align: left;
+  }
+  
+  .member-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--tg-theme-text-color);
+  }
+  
+  .member-fame {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: var(--tg-theme-hint-color);
+  }
+  
+  .button-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #229ED9, #1b89bf);
+    color: var(--tg-theme-button-text-color);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button-link:hover {
+    background: linear-gradient(to right, #1b89bf, #1479a9);
+    transform: translateY(-2px);
+  }
+  
+  .button-link:active {
+    transform: translateY(0);
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
+  .pagination-button {
+    background: #fff;
+    border: 2px solid var(--tg-theme-button-color);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .pagination-button:hover:not(:disabled) {
+    background: rgba(34, 158, 217, 0.1);
+  }
+  
+  .page-info {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  
