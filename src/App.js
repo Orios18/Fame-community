@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainPage from './pages/MainPage';
 import HallOfFamePage from './pages/HallOfFamePage';
 import './App.css';
 
@@ -9,8 +8,8 @@ function App() {
     <div className="app-wrapper">
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/hall-of-fame" element={<HallOfFamePage />} />
+          {/* Render HallOfFamePage at the root ("/") */}
+          <Route path="/" element={<HallOfFamePage />} />
         </Routes>
       </Router>
     </div>

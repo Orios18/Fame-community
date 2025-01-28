@@ -1,30 +1,36 @@
-
-.hall-of-fame-container {
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #229ED9; /* or your Telegram blue */
+  }
+  
+  .hall-of-fame-container {
     max-width: 900px;
+    min-height: 800px;
     width: 90%;
     margin: 2rem auto;
     padding: 2rem;
     text-align: center;
-    background: var(--tg-theme-secondary-bg-color);
-    color: var(--tg-theme-text-color);
+    background-color: #2C2C2C; /* dark grey */
+    color: #FFFFFF;           /* white text */
     border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
   
+  /* Loading, error, no-members text */
   .loading-message,
   .error-message,
   .no-members-message {
-    color: var(--tg-theme-hint-color);
+    color: #FFFBFB;
     font-size: 1.2rem;
     margin: 20px 0;
   }
   
   .error-message {
-    color: var(--tg-theme-destructive-text-color);
+    color: #F56565; 
   }
   
+  /* The list of members for Hall of Fame only */
   .members-list {
     display: flex;
     flex-direction: column;
@@ -37,15 +43,21 @@
     align-items: center;
     gap: 15px;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #3A3A3A;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
+    cursor: pointer;
   }
   
   .member-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+  
+  .member-image,
+  .member-info {
+    pointer-events: none; 
   }
   
   .member-image {
@@ -53,7 +65,7 @@
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--tg-theme-button-color);
+    border: 2px solid #66CFFF;
   }
   
   .member-info {
@@ -63,37 +75,16 @@
   .member-name {
     margin: 0;
     font-size: 1.2rem;
-    color: var(--tg-theme-text-color);
+    color: #FFFFFF;
   }
   
   .member-fame {
     margin: 5px 0 0;
     font-size: 0.9rem;
-    color: var(--tg-theme-hint-color);
+    color: #BBBBBB;
   }
   
-  .button-link {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: linear-gradient(to right, #229ED9, #1b89bf);
-    color: var(--tg-theme-button-text-color);
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .button-link:hover {
-    background: linear-gradient(to right, #1b89bf, #1479a9);
-    transform: translateY(-2px);
-  }
-  
-  .button-link:active {
-    transform: translateY(0);
-  }
-  
+  /* Pagination */
   .pagination-controls {
     display: flex;
     align-items: center;
@@ -103,21 +94,23 @@
   }
   
   .pagination-button {
-    background: #fff;
-    border: 2px solid var(--tg-theme-button-color);
+    background-color: #444444;
+    color: #FFFFFF;
+    border: 2px solid #66CFFF;
     border-radius: 8px;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
   
   .pagination-button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
   
   .pagination-button:hover:not(:disabled) {
-    background: rgba(34, 158, 217, 0.1);
+    background-color: #555555;
+    transform: translateY(-1px);
   }
   
   .page-info {
@@ -125,4 +118,69 @@
     font-weight: 500;
   }
   
+  /* Bottom Menu (3 sections) */
+  .bottom-menu {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #3A3A3A;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .bottom-menu-item {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .bottom-menu-item:hover {
+    text-decoration: underline;
+  }
+  /* Header Section Styles */
+.header-section {
+    background-color: #2c2c2c; /* Dark background for contrast */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #202020; /* Subtle border */
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5px; /* Space between logo and title */
+  }
+  
+  .header-logo {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%; /* Circular logo */
+    border: 2px solid #fff; /* White border */
+  }
+  
+  .header-title {
+    color: #ffffff; /* White text */
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .search-container {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 50%;
+    max-width: 200px;
+    border: 1px solid #52b5ef;
+    border-radius: 5px;
+    font-size: 16px;
+  }
   
