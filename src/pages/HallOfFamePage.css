@@ -153,15 +153,16 @@ html, body {
   justify-content: space-around;
   align-items: center;
   background-color: #3A3A3A;
-  padding: 0.8rem 0;
+  padding: 1.2rem 0; /* Increased padding to make the menu taller */
   z-index: 1000;
 }
 
 .bottom-menu-item {
   color: #FFFFFF;
-  font-size: 0.9rem;
+  font-size: 1.1rem; /* Increased font size */
+  font-weight: 600; /* Made the text bolder */
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 10px 16px; /* Increased padding to make the items bigger */
   border-radius: 6px;
   transition: background-color 0.2s;
 }
