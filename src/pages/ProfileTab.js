@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-/**
- * A profile page that reads user data from the Telegram WebApp environment.
- */
 function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
   const [error, setError] = useState(null);
@@ -12,19 +9,18 @@ function ProfileTab() {
 
     if (tg) {
       tg.ready(); // Ensure Telegram WebApp is initialized
-      console.log("Telegram WebApp initialized:", tg);
+      console.log("Telegram WebApp object:", tg);
 
-      // Check for user data immediately
       if (tg.initDataUnsafe?.user) {
         setTelegramUser(tg.initDataUnsafe.user);
         console.log("User data:", tg.initDataUnsafe.user);
       } else {
         setError("No user data found in initDataUnsafe.");
-        console.error("No user data found in initDataUnsafe:", tg.initDataUnsafe);
+        console.error("initDataUnsafe:", tg.initDataUnsafe);
       }
     } else {
       setError("Telegram WebApp not found. Please open this app inside Telegram.");
-      console.error("Telegram WebApp not found");
+      console.error("Telegram.WebApp not found in window object.");
     }
   }, []);
 
@@ -72,7 +68,6 @@ function ProfileTab() {
   );
 }
 
-// A little inline styling for demonstration
 const styles = {
   container: {
     minHeight: "400px",
