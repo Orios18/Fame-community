@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import "./ProfileTab.css"; // Import a new CSS file for styling
+import "./ProfileTab.css";
 
 function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
@@ -12,67 +12,74 @@ function ProfileTab() {
 
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
+    
+    const initializeUser = async (user) => {
+      try {
+        const userRef = doc(db, "Users", user.id.toString());
+        const userSnap = await getDocs(userRef);
+
+        if (!userSnap.exists()) {
+          // Create new user document if it doesn't exist
+          await setDoc(userRef, {
+            id: user.id,
+            first_name: user.first_name,
+            last_name: user.last_name || '',
+            username: user.username || '',
+            image_url: user.photo_url || fallbackImageUrl,
+            fame: 0,
+            created_at: new Date()
+          });
+        }
+
+        // Fetch updated user data
+        const newUserSnap = await getDocs(userRef);
+        setUserData(newUserSnap.data());
+      } catch (err) {
+        console.error("Firestore Error:", err);
+        setError("Error loading user data");
+      } finally {
+        setLoading(false);
+      }
+    };
 
     if (tg) {
-      tg.ready(); // Ensure Telegram WebApp is initialized
-      console.log("Telegram WebApp object:", tg);
-
-      if (tg.initDataUnsafe?.user) {
-        setTelegramUser(tg.initDataUnsafe.user);
-        fetchUserData(tg.initDataUnsafe.user.id); // Fetch user data from Firestore
+      tg.ready();
+      const user = tg.initDataUnsafe?.user;
+      
+      if (user) {
+        setTelegramUser(user);
+        initializeUser(user);
       } else {
-        setError("No user data found in initDataUnsafe.");
-        console.error("initDataUnsafe:", tg.initDataUnsafe);
+        setError("Telegram user data not available");
+        setLoading(false);
       }
     } else {
-      setError("Telegram WebApp not found. Please open this app inside Telegram.");
-      console.error("Telegram.WebApp not found in window object.");
-    }
-  }, []);
-
-  const fetchUserData = async (userId) => {
-    try {
-      const colRef = collection(db, "Users");
-      const userQuery = query(colRef, where("id", "==", userId));
-      const snapshot = await getDocs(userQuery);
-      if (!snapshot.empty) {
-        const data = snapshot.docs[0].data();
-        setUserData(data);
-      } else {
-        setError("User data not found in Firestore.");
-      }
-    } catch (err) {
-      console.error("Firestore Error:", err);
-      setError("Failed to load user data.");
-    } finally {
+      setError("Please open in Telegram");
       setLoading(false);
     }
-  };
+  }, []);
 
   if (error) {
     return (
       <div className="profile-container">
-        <h1 className="profile-title">Profile</h1>
-        <p className="profile-text">{error}</p>
-        <p className="profile-text">
-          Make sure you open this app <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
-        </p>
+        <h1>Profile</h1>
+        <p className="error">{error}</p>
       </div>
     );
   }
 
-  if (!telegramUser || loading) {
+  if (loading) {
     return (
       <div className="profile-container">
-        <h1 className="profile-title">Profile</h1>
-        <p className="profile-text">Loading user data...</p>
+        <h1>Profile</h1>
+        <p>Loading...</p>
       </div>
     );
   }
 
   return (
     <div className="profile-container">
-      <h1 className="profile-title">Your Telegram Profile</h1>
+      <h1>Your Profile</h1>
       <div className="profile-content">
         <img
           src={userData?.image_url || fallbackImageUrl}
@@ -80,25 +87,10 @@ function ProfileTab() {
           className="profile-image"
         />
         <div className="profile-details">
-          <div className="profile-field">
-            <strong>First Name:</strong> {telegramUser.first_name}
-          </div>
-          {telegramUser.last_name && (
-            <div className="profile-field">
-              <strong>Last Name:</strong> {telegramUser.last_name}
-            </div>
-          )}
-          {telegramUser.username && (
-            <div className="profile-field">
-              <strong>Username:</strong> @{telegramUser.username}
-            </div>
-          )}
-          <div className="profile-field">
-            <strong>User ID:</strong> {telegramUser.id}
-          </div>
-          <div className="profile-field">
-            <strong>Fame Level:</strong> {userData?.fame || 0}
-          </div>
+          <p><strong>Name:</strong> {userData.first_name} {userData.last_name}</p>
+          {userData.username && <p><strong>Username:</strong> @{userData.username}</p>}
+          <p><strong>User ID:</strong> {userData.id}</p>
+          <p><strong>Fame Level:</strong> {userData.fame}</p>
         </div>
       </div>
     </div>
