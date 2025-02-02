@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase";
+import "./ProfileTab.css"; // Import a new CSS file for styling
 
 function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const fallbackImageUrl = "/favicon.ico";
 
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
@@ -13,7 +19,7 @@ function ProfileTab() {
 
       if (tg.initDataUnsafe?.user) {
         setTelegramUser(tg.initDataUnsafe.user);
-        console.log("User data:", tg.initDataUnsafe.user);
+        fetchUserData(tg.initDataUnsafe.user.id); // Fetch user data from Firestore
       } else {
         setError("No user data found in initDataUnsafe.");
         console.error("initDataUnsafe:", tg.initDataUnsafe);
@@ -24,68 +30,79 @@ function ProfileTab() {
     }
   }, []);
 
+  const fetchUserData = async (userId) => {
+    try {
+      const colRef = collection(db, "Users");
+      const userQuery = query(colRef, where("id", "==", userId));
+      const snapshot = await getDocs(userQuery);
+      if (!snapshot.empty) {
+        const data = snapshot.docs[0].data();
+        setUserData(data);
+      } else {
+        setError("User data not found in Firestore.");
+      }
+    } catch (err) {
+      console.error("Firestore Error:", err);
+      setError("Failed to load user data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (error) {
     return (
-      <div style={styles.container}>
-        <h1 style={styles.title}>Profile</h1>
-        <p style={styles.text}>{error}</p>
-        <p style={styles.text}>
+      <div className="profile-container">
+        <h1 className="profile-title">Profile</h1>
+        <p className="profile-text">{error}</p>
+        <p className="profile-text">
           Make sure you open this app <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
         </p>
       </div>
     );
   }
 
-  if (!telegramUser) {
+  if (!telegramUser || loading) {
     return (
-      <div style={styles.container}>
-        <h1 style={styles.title}>Profile</h1>
-        <p style={styles.text}>Loading user data...</p>
+      <div className="profile-container">
+        <h1 className="profile-title">Profile</h1>
+        <p className="profile-text">Loading user data...</p>
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Your Telegram Profile</h1>
-      <div style={styles.field}>
-        <strong>First Name:</strong> {telegramUser.first_name}
-      </div>
-      {telegramUser.last_name && (
-        <div style={styles.field}>
-          <strong>Last Name:</strong> {telegramUser.last_name}
+    <div className="profile-container">
+      <h1 className="profile-title">Your Telegram Profile</h1>
+      <div className="profile-content">
+        <img
+          src={userData?.image_url || fallbackImageUrl}
+          alt="Profile"
+          className="profile-image"
+        />
+        <div className="profile-details">
+          <div className="profile-field">
+            <strong>First Name:</strong> {telegramUser.first_name}
+          </div>
+          {telegramUser.last_name && (
+            <div className="profile-field">
+              <strong>Last Name:</strong> {telegramUser.last_name}
+            </div>
+          )}
+          {telegramUser.username && (
+            <div className="profile-field">
+              <strong>Username:</strong> @{telegramUser.username}
+            </div>
+          )}
+          <div className="profile-field">
+            <strong>User ID:</strong> {telegramUser.id}
+          </div>
+          <div className="profile-field">
+            <strong>Fame Level:</strong> {userData?.fame || 0}
+          </div>
         </div>
-      )}
-      {telegramUser.username && (
-        <div style={styles.field}>
-          <strong>Username:</strong> @{telegramUser.username}
-        </div>
-      )}
-      <div style={styles.field}>
-        <strong>User ID:</strong> {telegramUser.id}
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    minHeight: "400px",
-    padding: "1rem",
-    textAlign: "center",
-    backgroundColor: "#1e1e1e",
-    color: "white",
-  },
-  title: {
-    marginBottom: "1rem",
-  },
-  text: {
-    lineHeight: "1.5",
-  },
-  field: {
-    margin: "0.5rem 0",
-    fontSize: "1.1rem",
-  },
-};
 
 export default ProfileTab;
