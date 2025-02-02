@@ -16,10 +16,10 @@ function ProfileTab() {
     const initializeUser = async (user) => {
       try {
         const userRef = doc(db, "Users", user.id.toString());
-        const userSnap = await getDocs(userRef);
+        const userSnap = await getDoc(userRef); // Changed to getDoc
 
         if (!userSnap.exists()) {
-          // Create new user document if it doesn't exist
+          // Create new user document
           await setDoc(userRef, {
             id: user.id,
             first_name: user.first_name,
@@ -31,8 +31,8 @@ function ProfileTab() {
           });
         }
 
-        // Fetch updated user data
-        const newUserSnap = await getDocs(userRef);
+        // Fetch updated data
+        const newUserSnap = await getDoc(userRef); // Changed to getDoc
         setUserData(newUserSnap.data());
       } catch (err) {
         console.error("Firestore Error:", err);
