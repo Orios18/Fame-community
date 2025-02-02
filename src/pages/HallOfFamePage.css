@@ -117,8 +117,8 @@ html, body {
 /* Pagination */
 .pagination-controls {
   display: flex;
-  justify-content: space-between; /* Distribute space between items */
   align-items: center;
+  justify-content: center; /* Center the content */
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -131,6 +131,9 @@ html, body {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.95rem;
+  flex: 1; /* Makes buttons take equal space */
+  max-width: 120px; /* Prevents buttons from being too large */
+  text-align: center;
 }
 
 .pagination-button:disabled {
@@ -139,10 +142,10 @@ html, body {
 }
 
 .page-info {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  flex-grow: 1; /* Allow the page info to take up remaining space */
-  text-align: center; /* Center the page info text */
+  text-align: center;
+  min-width: 120px; /* Ensure consistent width for page info */
 }
 
 
