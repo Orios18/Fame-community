@@ -8,13 +8,22 @@ function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
 
   useEffect(() => {
-    // Check if the Telegram WebApp object exists
     const tg = window.Telegram?.WebApp;
 
-    if (tg?.initDataUnsafe?.user) {
-      // The user object typically has fields like:
-      // { id, first_name, last_name, username, language_code, is_premium, ... }
-      setTelegramUser(tg.initDataUnsafe.user);
+    if (tg) {
+      tg.ready(); // Ensure Telegram WebApp is initialized
+      console.log("Telegram WebApp initialized:", tg);
+
+      setTimeout(() => {
+        if (tg.initDataUnsafe?.user) {
+          setTelegramUser(tg.initDataUnsafe.user);
+          console.log("User data:", tg.initDataUnsafe.user);
+        } else {
+          console.error("No user data found in initDataUnsafe:", tg.initDataUnsafe);
+        }
+      }, 1000); // Delayed check for user data (1 second)
+    } else {
+      console.error("Telegram WebApp not found");
     }
   }, []);
 
@@ -25,7 +34,7 @@ function ProfileTab() {
         <p style={styles.text}>
           We couldn’t detect your Telegram user info. Make sure you open this app
           <br />
-          <strong>inside Telegram’s in-app browser</strong> via a WebApp link.
+          <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
         </p>
       </div>
     );
@@ -50,7 +59,6 @@ function ProfileTab() {
       <div style={styles.field}>
         <strong>User ID:</strong> {telegramUser.id}
       </div>
-      {/* Add more fields as desired (language_code, is_premium, etc.) */}
     </div>
   );
 }
@@ -58,9 +66,11 @@ function ProfileTab() {
 // A little inline styling for demonstration
 const styles = {
   container: {
-    minHeight: "400px", // so it matches the size of your other tabs
+    minHeight: "400px",
     padding: "1rem",
     textAlign: "center",
+    backgroundColor: "#1e1e1e",
+    color: "white",
   },
   title: {
     marginBottom: "1rem",
