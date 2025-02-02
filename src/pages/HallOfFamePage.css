@@ -117,7 +117,7 @@ html, body {
 /* Pagination */
 .pagination-controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Distribute space between items */
   align-items: center;
   gap: 1rem;
   margin: 1.5rem 0;
@@ -141,7 +141,10 @@ html, body {
 .page-info {
   font-size: 0.95rem;
   font-weight: 500;
+  flex-grow: 1; /* Allow the page info to take up remaining space */
+  text-align: center; /* Center the page info text */
 }
+
 
 /* Bottom Menu */
 .bottom-menu {

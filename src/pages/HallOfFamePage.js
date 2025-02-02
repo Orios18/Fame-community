@@ -12,7 +12,7 @@ function HallOfFamePage() {
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
-  const pageSize = 6; // users per page
+  const pageSize = 10; // users per page
   const fallbackImageUrl = "/favicon.ico";
 
   useEffect(() => {
