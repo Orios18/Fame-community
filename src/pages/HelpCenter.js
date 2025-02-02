@@ -9,7 +9,7 @@ function HelpCenter() {
       <h1 style={styles.title}>📖 Help Center</h1>
 
       <div style={styles.section}>
-        <h2 style={styles.subtitle}>❓ Frequently Asked Questions</h2>
+        <h2 style={styles.subtitle}> Frequently Asked Questions</h2>
         <p><strong>Q: What is Fame?</strong></p>
         <p>A: Think of Fame as your digital reputation scorecard.
              It's a reliable and easy way to build trust online,

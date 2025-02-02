@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 /**
- * A profile page that attempts to read user data
- * from the Telegram WebApp environment.
+ * A profile page that reads user data from the Telegram WebApp environment.
  */
 function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
@@ -14,28 +14,37 @@ function ProfileTab() {
       tg.ready(); // Ensure Telegram WebApp is initialized
       console.log("Telegram WebApp initialized:", tg);
 
-      setTimeout(() => {
-        if (tg.initDataUnsafe?.user) {
-          setTelegramUser(tg.initDataUnsafe.user);
-          console.log("User data:", tg.initDataUnsafe.user);
-        } else {
-          console.error("No user data found in initDataUnsafe:", tg.initDataUnsafe);
-        }
-      }, 1000); // Delayed check for user data (1 second)
+      // Check for user data immediately
+      if (tg.initDataUnsafe?.user) {
+        setTelegramUser(tg.initDataUnsafe.user);
+        console.log("User data:", tg.initDataUnsafe.user);
+      } else {
+        setError("No user data found in initDataUnsafe.");
+        console.error("No user data found in initDataUnsafe:", tg.initDataUnsafe);
+      }
     } else {
+      setError("Telegram WebApp not found. Please open this app inside Telegram.");
       console.error("Telegram WebApp not found");
     }
   }, []);
+
+  if (error) {
+    return (
+      <div style={styles.container}>
+        <h1 style={styles.title}>Profile</h1>
+        <p style={styles.text}>{error}</p>
+        <p style={styles.text}>
+          Make sure you open this app <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
+        </p>
+      </div>
+    );
+  }
 
   if (!telegramUser) {
     return (
       <div style={styles.container}>
         <h1 style={styles.title}>Profile</h1>
-        <p style={styles.text}>
-          We couldn’t detect your Telegram user info. Make sure you open this app
-          <br />
-          <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
-        </p>
+        <p style={styles.text}>Loading user data...</p>
       </div>
     );
   }
