@@ -84,7 +84,7 @@ function HallOfFamePage() {
     if (activeTab === "hallOfFame") {
       return (
         <div>
-          <h1>🏆 𝐇𝐚𝐥𝐥 𝐨𝐟 𝐟𝐚𝐦𝐞 🏆</h1>
+          <h1> 𝐇𝐚𝐥𝐥 𝐨𝐟 𝐟𝐚𝐦𝐞 </h1>
 
           {/* Search Input */}
           <div className="search-container">
@@ -183,7 +183,7 @@ function HallOfFamePage() {
             setCurrentPage(0);
           }}
         >
-          Profile
+          🪪 Profile
         </div>
         <div
           className="bottom-menu-item"
@@ -192,7 +192,7 @@ function HallOfFamePage() {
             setCurrentPage(0);
           }}
         >
-          Hall of Fame
+          🏆 Hall of Fame
         </div>
         <div
           className="bottom-menu-item"
@@ -201,7 +201,7 @@ function HallOfFamePage() {
             setCurrentPage(0);
           }}
         >
-          Help Center
+          ℹ️ Help Center
         </div>
       </div>
     </div>
