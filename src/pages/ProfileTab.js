@@ -71,7 +71,7 @@ function ProfileTab() {
 
   return (
     <div className="profile-container">
-      <h2 className="profile-header">Character Info</h2>
+      <h2 className="profile-header">Fame Profile</h2>
       <div className="profile-content">
         {/* Profile Picture */}
         <img
