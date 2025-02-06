@@ -165,7 +165,7 @@ html, body {
 
 .bottom-menu-item {
   color: #FFFFFF;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.6rem; /* Increased font size */
   font-weight: 600; /* Made the text bolder */
   cursor: pointer;
   padding: 10px 16px; /* Increased padding to make the items bigger */
