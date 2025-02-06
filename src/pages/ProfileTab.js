@@ -71,25 +71,32 @@ function ProfileTab() {
 
   return (
     <div className="profile-container">
-      <h1 className="profile-title">Fame Profile</h1>
-      <div className="profile-field">
-        <strong>First Name:</strong> {telegramUser.first_name}
-      </div>
-      {telegramUser.last_name && (
-        <div className="profile-field">
-          <strong>Last Name:</strong> {telegramUser.last_name}
+      <h2 className="profile-header">Character Info</h2>
+      <div className="profile-content">
+        {/* Profile Picture */}
+        <img
+          src={telegramUser.photo_url || "/default-avatar.png"}
+          alt="Profile"
+          className="profile-avatar"
+        />
+
+        {/* User Info */}
+        <div className="profile-details">
+          <div className="profile-field">
+            <span className="field-label">Name:</span> {telegramUser.first_name}
+          </div>
+          {telegramUser.username && (
+            <div className="profile-field">
+              <span className="field-label">Username:</span> @{telegramUser.username}
+            </div>
+          )}
+          <div className="profile-field">
+            <span className="field-label">User ID:</span> {telegramUser.id}
+          </div>
+          <div className="profile-field">
+            <span className="field-label">Fame:</span> {fameLevel !== null ? fameLevel : "Loading..."}
+          </div>
         </div>
-      )}
-      {telegramUser.username && (
-        <div className="profile-field">
-          <strong>Username:</strong> @{telegramUser.username}
-        </div>
-      )}
-      <div className="profile-field">
-        <strong>User ID:</strong> {telegramUser.id}
-      </div>
-      <div className="profile-field">
-        <strong>Fame Level:</strong> {fameLevel !== null ? fameLevel : "Loading..."}
       </div>
     </div>
   );

@@ -1,57 +1,68 @@
-/* ProfileTab.css */
+/* Profile Container */
 .profile-container {
-  min-height: 400px;
-  padding: 1.5rem;
-  text-align: center;
-  background-color: #444444;
+  width: 350px;
+  background: #2c2c2c;
   color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  margin: 2rem auto;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border: 2px solid #66CFFF;
+  text-align: center;
   font-family: 'Arial', sans-serif;
+  margin: 20px auto;
 }
 
-.profile-title {
-  font-size: 1.8rem;
+/* Header */
+.profile-header {
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-  color: #ffffff;
-  border-bottom: 2px solid #0088cc;
-  padding-bottom: 5px;
+  color: #FFD700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 5px 0;
+  border-radius: 8px;
 }
 
-.profile-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #dcdcdc;
+/* Profile Content */
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
 }
 
+/* Profile Avatar */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 2px solid #FFD700;
+  object-fit: cover;
+  background-color: white;
+}
+
+/* Profile Details */
+.profile-details {
+  flex: 1;
+  text-align: left;
+  padding-left: 5px;
+}
+
+/* Profile Field */
 .profile-field {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 8px;
-  margin: 8px 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: white;
-}
-
-.profile-field strong {
-  color: #0088cc;
-}
-
-.error-message {
-  color: #ff4d4d;
-  font-weight: bold;
-  background: rgba(255, 77, 77, 0.2);
-  padding: 10px;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-
-.loading-message {
+  padding: 8px;
+  border-radius: 6px;
+  margin: 4px 0;
   font-size: 1rem;
-  color: #cccccc;
-  margin-top: 1rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Field Label */
+.field-label {
+  color: #66CFFF;
+  font-weight: bold;
 }
