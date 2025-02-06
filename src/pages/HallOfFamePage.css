@@ -118,22 +118,30 @@ html, body {
 .pagination-controls {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the content */
-  gap: 1rem;
-  margin: 1.5rem 0;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 100px;
 }
 
+/* Pagination Buttons */
 .pagination-button {
-  background-color: #444444;
-  color: #FFFFFF;
-  border: 2px solid #66CFFF;
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
   border-radius: 6px;
-  padding: 0.5rem 1rem;
   cursor: pointer;
-  font-size: 0.95rem;
-  flex: 1; /* Makes buttons take equal space */
-  max-width: 120px; /* Prevents buttons from being too large */
-  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination-button:hover {
+  background-color: #0070aa;
 }
 
 .pagination-button:disabled {
@@ -143,10 +151,9 @@ html, body {
 
 .page-info {
   font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  min-width: 120px; /* Ensure consistent width for page info */
+  font-weight: bold;
 }
+
 
 
 /* Bottom Menu */
@@ -265,4 +272,84 @@ html, body {
   .bottom-menu {
     padding: 0.6rem 0;
   }
+}
+
+.fame-buttons {
+  display: flex;
+  gap: 10px;
+  margin-right: auto; /* Pushes buttons to the right */
+}
+
+/* Member Card */
+.member-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #3A3A3A;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  gap: 12px;
+  min-height: 80px;
+}
+
+/* Profile Picture */
+.member-image {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #66CFFF;
+}
+
+/* Member Info (Name & Fame) */
+.member-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0; /* Prevents overflow */
+}
+
+/* Name */
+.member-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fame Level */
+.member-fame {
+  font-size: 0.9rem;
+  color: #BBBBBB;
+  margin: 4px 0 0;
+}
+
+/* Fame & Defame Buttons */
+.fame-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.fame-button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fame-button:hover {
+  background-color: #0070aa;
 }

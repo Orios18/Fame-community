@@ -63,23 +63,6 @@ function HallOfFamePage() {
     }
   };
 
-  const openTelegramProfile = (userId, username) => {
-    const telegramAppLink = `tg://user?id=${userId}`;
-    const telegramWebLink = `https://t.me/${username}`;
-
-    const link = document.createElement("a");
-    link.href = telegramAppLink;
-    link.target = "_blank";
-
-    link.onclick = (e) => {
-      setTimeout(() => {
-        window.location.href = telegramWebLink;
-      }, 100);
-    };
-
-    link.click();
-  };
-
   function renderContent() {
     if (activeTab === "hallOfFame") {
       return (
@@ -108,46 +91,70 @@ function HallOfFamePage() {
               No members found matching your search.
             </p>
           )}
-
           <div className="members-list">
             {displayedMembers.map((member) => (
-              <div
-                key={member.id}
-                className="member-card"
-                //onClick={() => openTelegramProfile(member.id, member.username)}
-              >
+              <div key={member.id} className="member-card">
+                
+                {/* Profile Picture */}
                 <img
                   src={member.image_url || fallbackImageUrl}
                   alt={member.first_name}
                   className="member-image"
                 />
+
+                {/* Name & Fame Level */}
                 <div className="member-info">
                   <h3 className="member-name">{member.first_name}</h3>
                   <p className="member-fame">Fame: {member.fame}</p>
+                </div>
+
+                {/* Fame & Defame Buttons */}
+                <div className="fame-buttons">
+                  <a
+                    href={`https://app.tonkeeper.com/transfer/EQABn05Gcmt4coTmfOMCg8nf7vL1c_JL56L42F4dIOl3P8HJ?amount=100000000&text=F${member.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fame-button"
+                  >
+                    +
+                  </a>
+
+                  <a
+                    href={`https://app.tonkeeper.com/transfer/EQABn05Gcmt4coTmfOMCg8nf7vL1c_JL56L42F4dIOl3P8HJ?amount=100000000&text=D${member.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fame-button"
+                  >
+                    -
+                  </a>
                 </div>
               </div>
             ))}
           </div>
 
+          {/* Pagination Controls */}
           <div className="pagination-controls">
             <button
               onClick={goToPreviousPage}
               disabled={currentPage === 0}
               className="pagination-button"
             >
-              &lt; Previous
+              Previous
             </button>
+
             <span className="page-info">
               Page {currentPage + 1} of {totalPages}
             </span>
+
             <button
               onClick={goToNextPage}
               disabled={currentPage === totalPages - 1}
               className="pagination-button"
             >
-              Next &gt;
+              Next
             </button>
           </div>
+
         </div>
       );
     } else if (activeTab === "profile") {
@@ -162,11 +169,7 @@ function HallOfFamePage() {
       {/* Header Section */}
       <header className="header-section">
         <div className="header-content">
-          <img
-            src="/logo192.png" // Replace with your logo path
-            alt="Logo"
-            className="header-logo"
-          />
+          <img src="/logo192.png" alt="Logo" className="header-logo" />
           <h1 className="header-title">𝐹𝒶𝓂𝑒</h1>
         </div>
       </header>
@@ -176,31 +179,13 @@ function HallOfFamePage() {
 
       {/* Bottom menu with 3 items */}
       <div className="bottom-menu">
-        <div
-          className="bottom-menu-item"
-          onClick={() => {
-            setActiveTab("profile");
-            setCurrentPage(0);
-          }}
-        >
+        <div className="bottom-menu-item" onClick={() => setActiveTab("profile")}>
           🪪 Profile
         </div>
-        <div
-          className="bottom-menu-item"
-          onClick={() => {
-            setActiveTab("hallOfFame");
-            setCurrentPage(0);
-          }}
-        >
+        <div className="bottom-menu-item" onClick={() => setActiveTab("hallOfFame")}>
           🏆 Hall of Fame
         </div>
-        <div
-          className="bottom-menu-item"
-          onClick={() => {
-            setActiveTab("help");
-            setCurrentPage(0);
-          }}
-        >
+        <div className="bottom-menu-item" onClick={() => setActiveTab("help")}>
           ℹ️ Help Center
         </div>
       </div>
