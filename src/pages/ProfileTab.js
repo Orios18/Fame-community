@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ProfileTab.css"; // Import the CSS file
 
 function ProfileTab() {
   const [telegramUser, setTelegramUser] = useState(null);
@@ -8,7 +9,7 @@ function ProfileTab() {
     const tg = window.Telegram?.WebApp;
 
     if (tg) {
-      tg.ready(); // Ensure Telegram WebApp is initialized
+      tg.ready();
       console.log("Telegram WebApp object:", tg);
 
       if (tg.initDataUnsafe?.user) {
@@ -26,10 +27,10 @@ function ProfileTab() {
 
   if (error) {
     return (
-      <div style={styles.container}>
-        <h1 style={styles.title}>Profile</h1>
-        <p style={styles.text}>{error}</p>
-        <p style={styles.text}>
+      <div className="profile-container">
+        <h1 className="profile-title">Profile</h1>
+        <p className="error-message">{error}</p>
+        <p className="profile-text">
           Make sure you open this app <strong>inside Telegram’s in-app browser</strong> via a WebApp button.
         </p>
       </div>
@@ -38,54 +39,34 @@ function ProfileTab() {
 
   if (!telegramUser) {
     return (
-      <div style={styles.container}>
-        <h1 style={styles.title}>Profile</h1>
-        <p style={styles.text}>Loading user data...</p>
+      <div className="profile-container">
+        <h1 className="profile-title">Profile</h1>
+        <p className="loading-message">Loading user data...</p>
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Your Telegram Profile</h1>
-      <div style={styles.field}>
+    <div className="profile-container">
+      <h1 className="profile-title">Your Telegram Profile</h1>
+      <div className="profile-field">
         <strong>First Name:</strong> {telegramUser.first_name}
       </div>
       {telegramUser.last_name && (
-        <div style={styles.field}>
+        <div className="profile-field">
           <strong>Last Name:</strong> {telegramUser.last_name}
         </div>
       )}
       {telegramUser.username && (
-        <div style={styles.field}>
+        <div className="profile-field">
           <strong>Username:</strong> @{telegramUser.username}
         </div>
       )}
-      <div style={styles.field}>
+      <div className="profile-field">
         <strong>User ID:</strong> {telegramUser.id}
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    minHeight: "400px",
-    padding: "1rem",
-    textAlign: "center",
-    backgroundColor: "#1e1e1e",
-    color: "white",
-  },
-  title: {
-    marginBottom: "1rem",
-  },
-  text: {
-    lineHeight: "1.5",
-  },
-  field: {
-    margin: "0.5rem 0",
-    fontSize: "1.1rem",
-  },
-};
 
 export default ProfileTab;
