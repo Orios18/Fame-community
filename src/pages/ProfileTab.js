@@ -71,7 +71,7 @@ function ProfileTab() {
 
   return (
     <div className="profile-container">
-      <h1 className="profile-title">Your Telegram Profile</h1>
+      <h1 className="profile-title">Fame Profile</h1>
       <div className="profile-field">
         <strong>First Name:</strong> {telegramUser.first_name}
       </div>
