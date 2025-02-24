@@ -91,10 +91,10 @@ function HallOfFamePage() {
               No members found matching your search.
             </p>
           )}
+
           <div className="members-list">
             {displayedMembers.map((member) => (
               <div key={member.id} className="member-card">
-                
                 {/* Profile Picture */}
                 <img
                   src={member.image_url || fallbackImageUrl}
@@ -154,7 +154,6 @@ function HallOfFamePage() {
               Next
             </button>
           </div>
-
         </div>
       );
     } else if (activeTab === "profile") {
