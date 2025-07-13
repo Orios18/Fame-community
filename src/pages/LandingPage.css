@@ -113,8 +113,8 @@
 /* User Cards */
 .user-card {
   background: #ffffff;
-  border-radius: 16px;
-  padding: 1.5rem;
+  border-radius: 12px;
+  padding: 1rem;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   border: 2px solid #e2e8f0;
   transition: all 0.3s ease;
@@ -198,12 +198,12 @@
 }
 
 .avatar-image {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #0088cc;
-  box-shadow: 0 8px 15px -3px rgb(0 0 0 / 0.1);
+  border: 3px solid #0088cc;
+  box-shadow: 0 6px 12px -3px rgb(0 0 0 / 0.1);
 }
 
 .rank-badge {
@@ -224,7 +224,7 @@
 }
 
 .user-name {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: #1e293b;
@@ -235,7 +235,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #64748b;
   margin-bottom: 0.5rem;
@@ -265,10 +265,10 @@
   background: linear-gradient(135deg, #0088cc, #0077b3);
   color: white;
   text-decoration: none;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   width: 100%;
