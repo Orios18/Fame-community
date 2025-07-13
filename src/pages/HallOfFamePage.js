@@ -105,6 +105,37 @@ function HallOfFamePage() {
           </p>
         )}
 
+        {/* Pagination Controls - Moved above members list */}
+        {totalPages > 1 && (
+          <div className="pagination-controls">
+            <button
+              onClick={goToPreviousPage}
+              disabled={currentPage === 0}
+              className="pagination-button"
+              title="Previous page"
+            >
+              <FaChevronLeft />
+              <span className="pagination-text">Previous</span>
+            </button>
+
+            <div className="page-info">
+              <span className="page-numbers">
+                {currentPage + 1} of {totalPages}
+              </span>
+            </div>
+
+            <button
+              onClick={goToNextPage}
+              disabled={currentPage === totalPages - 1}
+              className="pagination-button"
+              title="Next page"
+            >
+              <span className="pagination-text">Next</span>
+              <FaChevronRight />
+            </button>
+          </div>
+        )}
+
         <div className="members-list">
           {displayedMembers.map((member) => (
             <div key={member.id} className="member-card">
@@ -149,37 +180,6 @@ function HallOfFamePage() {
             </div>
           ))}
         </div>
-
-        {/* Pagination Controls */}
-        {totalPages > 1 && (
-          <div className="pagination-controls">
-            <button
-              onClick={goToPreviousPage}
-              disabled={currentPage === 0}
-              className="pagination-button"
-              title="Previous page"
-            >
-              <FaChevronLeft />
-              <span className="pagination-text">Previous</span>
-            </button>
-
-            <div className="page-info">
-              <span className="page-numbers">
-                {currentPage + 1} of {totalPages}
-              </span>
-            </div>
-
-            <button
-              onClick={goToNextPage}
-              disabled={currentPage === totalPages - 1}
-              className="pagination-button"
-              title="Next page"
-            >
-              <span className="pagination-text">Next</span>
-              <FaChevronRight />
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
