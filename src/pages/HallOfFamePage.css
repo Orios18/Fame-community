@@ -286,12 +286,12 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
+  margin-top: 0.5rem; /* Reduced from 2rem */
+  padding: 0.75rem;    /* Reduced from 1.5rem */
   font-size: 1rem;
   font-weight: 600;
   color: #1e293b;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem; /* Reduced from 2rem */
   flex-wrap: nowrap;
   overflow-x: auto;
 }
@@ -427,8 +427,9 @@ h1 {
   /* Mobile pagination - single line with smaller buttons */
   .pagination-controls {
     gap: 0.5rem;
-    padding: 1rem;
-    padding-bottom: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   .pagination-button {
@@ -469,7 +470,8 @@ h1 {
 
   .pagination-controls {
     gap: 0.25rem;
-    padding: 0.75rem;
+    padding: 0.25rem;
+    margin-top: 0.1rem;
   }
 
   .pagination-button {
