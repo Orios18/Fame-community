@@ -1,7 +1,7 @@
 /* Professional Fame Community App - Profile Tab */
 
 .profile-container {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.95);
@@ -44,7 +44,7 @@
 
 .profile-details {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   background: #ffffff;
   border-radius: 16px;
   padding: 2rem;
