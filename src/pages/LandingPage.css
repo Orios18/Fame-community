@@ -2,7 +2,7 @@
 
 .landing-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   padding-bottom: 80px; /* Space for fixed navbar */
@@ -10,8 +10,25 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
+  box-sizing: border-box;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   color: #1e293b;
+}
+
+@media (max-width: 900px) {
+  .landing-container {
+    max-width: 98vw;
+    padding: 10px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-container {
+    max-width: 99vw;
+    padding: 5px;
+    margin: 0 2vw;
+  }
 }
 
 /* Hero Section */

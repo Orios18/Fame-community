@@ -41,15 +41,33 @@
 }
 
 .help-content {
-  max-width: 800px;
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   color: #1e293b;
+}
+
+@media (max-width: 900px) {
+  .help-content {
+    max-width: 98vw;
+    padding: 10px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .help-content {
+    max-width: 99vw;
+    padding: 5px;
+    margin: 0 2vw;
+  }
 }
 
 .help-title {
