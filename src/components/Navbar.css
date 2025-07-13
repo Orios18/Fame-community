@@ -1,0 +1,85 @@
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 123, 255, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 123, 255, 0.1);
+}
+
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 60px;
+  text-align: center;
+}
+
+.navbar-item:hover {
+  background: rgba(0, 123, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.navbar-item.active {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.navbar-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.navbar-item.active .navbar-icon {
+  transform: scale(1.1);
+}
+
+.navbar-text {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.navbar-item.active .navbar-text {
+  font-weight: 600;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 0;
+  }
+  
+  .navbar-item {
+    padding: 6px 12px;
+    min-width: 50px;
+  }
+  
+  .navbar-icon {
+    font-size: 18px;
+  }
+  
+  .navbar-text {
+    font-size: 10px;
+  }
+}
+
+/* Ensure content doesn't get hidden behind navbar */
+.app-wrapper {
+  padding-bottom: 80px;
+} 
