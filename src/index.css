@@ -1,4 +1,4 @@
-/* Professional Fame Community App - Global Styles */
+/* Professional Fame Community App - Global Styles (Telegram Theme) */
 
 * {
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   color: #1e293b;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #00a8ff 100%);
   min-height: 100vh;
   background-attachment: fixed;
 }
@@ -32,13 +32,13 @@ html {
 
 /* Focus styles for accessibility */
 *:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #0088cc;
   outline-offset: 2px;
 }
 
 /* Selection styles */
 ::selection {
-  background-color: rgba(37, 99, 235, 0.2);
+  background-color: rgba(0, 136, 204, 0.2);
   color: #1e293b;
 }
 

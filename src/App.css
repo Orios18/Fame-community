@@ -1,13 +1,13 @@
 /*
-  Professional Fame Community App Design
+  Professional Fame Community App Design - Telegram Theme
   Modern, clean design with improved visual hierarchy and user experience
 */
 
 :root {
-  /* Professional color palette */
-  --primary-color: #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-light: #3b82f6;
+  /* Telegram color palette */
+  --primary-color: #0088cc;
+  --primary-dark: #0077b3;
+  --primary-light: #00a8ff;
   --secondary-color: #64748b;
   --accent-color: #f59e0b;
   --success-color: #10b981;
@@ -56,7 +56,7 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0088cc 0%, #00a8ff 100%);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -217,7 +217,7 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+  box-shadow: 0 0 0 3px rgb(0 136 204 / 0.1);
 }
 
 /* Responsive design */

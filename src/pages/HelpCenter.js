@@ -1,5 +1,16 @@
 import React from "react";
 import "./HelpCenter.css";
+import { 
+  FaBookOpen, 
+  FaQuestionCircle, 
+  FaPhone, 
+  FaLink, 
+  FaFileAlt, 
+  FaGlobe,
+  FaEnvelope,
+  FaUserTie,
+  FaComments
+} from "react-icons/fa";
 
 /**
  * Help Center Page: Provides basic FAQ and support contact details.
@@ -7,10 +18,16 @@ import "./HelpCenter.css";
 function HelpCenter() {
   return (
     <div className="help-container">
-      <h1 className="help-title">📖 Help Center</h1>
+      <h1 className="help-title">
+        <FaBookOpen className="help-title-icon" />
+        Help Center
+      </h1>
 
       <div className="help-section">
-        <h2 className="help-subtitle">❓ Frequently Asked Questions</h2>
+        <h2 className="help-subtitle">
+          <FaQuestionCircle className="help-subtitle-icon" />
+          Frequently Asked Questions
+        </h2>
         
         <div className="faq-item">
           <h3 className="faq-question">What is Fame?</h3>
@@ -40,25 +57,28 @@ function HelpCenter() {
       </div>
 
       <div className="help-section">
-        <h2 className="help-subtitle">📞 Need Support?</h2>
+        <h2 className="help-subtitle">
+          <FaPhone className="help-subtitle-icon" />
+          Need Support?
+        </h2>
         <p className="help-text">If you have any issues, feel free to contact us via Telegram:</p>
         <ul className="help-list">
           <li>
-            <span className="contact-icon">📩</span>
+            <FaEnvelope className="contact-icon" />
             <a href="https://t.me/fames" target="_blank" rel="noopener noreferrer" className="help-link">
               @fames
             </a>
             <span className="contact-description">(General Support)</span>
           </li>
           <li>
-            <span className="contact-icon">👨‍💻</span>
+            <FaUserTie className="contact-icon" />
             <a href="https://t.me/ton_fields" target="_blank" rel="noopener noreferrer" className="help-link">
               @ton_fields
             </a>
             <span className="contact-description">(Technical Help)</span>
           </li>
           <li>
-            <span className="contact-icon">💬</span>
+            <FaComments className="contact-icon" />
             <a href="https://t.me/badihi" target="_blank" rel="noopener noreferrer" className="help-link">
               @badihi
             </a>
@@ -68,11 +88,15 @@ function HelpCenter() {
       </div>
 
       <div className="help-section">
-        <h2 className="help-subtitle">🔗 External Resources</h2>
+        <h2 className="help-subtitle">
+          <FaLink className="help-subtitle-icon" />
+          External Resources
+        </h2>
         <ul className="help-list">
           <li>
             <a href="https://telegra.ph/Hall-Of-Fame-09-24" target="_blank" rel="noopener noreferrer" className="help-link">
-              📄 White Paper
+              <FaFileAlt className="link-icon" />
+              White Paper
             </a>
           </li>
         </ul>
@@ -80,7 +104,8 @@ function HelpCenter() {
         <ul className="help-list">
           <li>
             <a href="https://ton.org" target="_blank" rel="noopener noreferrer" className="help-link">
-              🌍 TON Official Website
+              <FaGlobe className="link-icon" />
+              TON Official Website
             </a>
           </li>
         </ul>

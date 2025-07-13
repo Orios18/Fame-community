@@ -2,8 +2,18 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 import "./HallOfFamePage.css";
-import HelpCenter from "./HelpCenter"; // Import the HelpCenter component
-import ProfileTab from "./ProfileTab"; // Import the ProfileTab component
+import HelpCenter from "./HelpCenter";
+import ProfileTab from "./ProfileTab";
+import { 
+  FaTrophy, 
+  FaSearch, 
+  FaPlus, 
+  FaMinus, 
+  FaChevronLeft, 
+  FaChevronRight,
+  FaIdCard,
+  FaQuestionCircle
+} from "react-icons/fa";
 
 function HallOfFamePage() {
   const [activeTab, setActiveTab] = useState("hallOfFame");
@@ -11,8 +21,8 @@ function HallOfFamePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [searchQuery, setSearchQuery] = useState(""); // State for search query
-  const pageSize = 10; // users per page
+  const [searchQuery, setSearchQuery] = useState("");
+  const pageSize = 10;
   const fallbackImageUrl = "/favicon.ico";
 
   useEffect(() => {
@@ -39,7 +49,6 @@ function HallOfFamePage() {
     }
   }, [activeTab]);
 
-  // Filter members based on search query
   const filteredMembers = members.filter((member) => {
     const fullName = `${member.first_name} ${member.last_name || ""}`.toLowerCase();
     const username = member.username ? member.username.toLowerCase() : "";
@@ -71,16 +80,19 @@ function HallOfFamePage() {
 
           {/* Search Input */}
           <div className="search-container">
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setCurrentPage(0); // Reset to the first page when searching
-              }}
-              className="search-input"
-            />
+            <div className="search-input-wrapper">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search members..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(0);
+                }}
+                className="search-input"
+              />
+            </div>
           </div>
 
           {loading && <p className="loading-message">Loading...</p>}
@@ -105,7 +117,10 @@ function HallOfFamePage() {
                 {/* Name & Fame Level */}
                 <div className="member-info">
                   <h3 className="member-name">{member.first_name}</h3>
-                  <p className="member-fame">Fame: {member.fame}</p>
+                  <p className="member-fame">
+                    <FaTrophy className="fame-icon" />
+                    Fame: {member.fame}
+                  </p>
                 </div>
 
                 {/* Fame & Defame Buttons */}
@@ -114,18 +129,20 @@ function HallOfFamePage() {
                     href={`https://app.tonkeeper.com/transfer/EQABn05Gcmt4coTmfOMCg8nf7vL1c_JL56L42F4dIOl3P8HJ?amount=100000000&text=F${member.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="fame-button"
+                    className="fame-button fame-button-plus"
+                    title="Give Fame"
                   >
-                    +
+                    <FaPlus />
                   </a>
 
                   <a
                     href={`https://app.tonkeeper.com/transfer/EQABn05Gcmt4coTmfOMCg8nf7vL1c_JL56L42F4dIOl3P8HJ?amount=100000000&text=D${member.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="fame-button"
+                    className="fame-button fame-button-minus"
+                    title="Give Defame"
                   >
-                    -
+                    <FaMinus />
                   </a>
                 </div>
               </div>
@@ -133,27 +150,35 @@ function HallOfFamePage() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="pagination-controls">
-            <button
-              onClick={goToPreviousPage}
-              disabled={currentPage === 0}
-              className="pagination-button"
-            >
-              Previous
-            </button>
+          {totalPages > 1 && (
+            <div className="pagination-controls">
+              <button
+                onClick={goToPreviousPage}
+                disabled={currentPage === 0}
+                className="pagination-button"
+                title="Previous page"
+              >
+                <FaChevronLeft />
+                <span className="pagination-text">Previous</span>
+              </button>
 
-            <span className="page-info">
-              Page {currentPage + 1} of {totalPages}
-            </span>
+              <div className="page-info">
+                <span className="page-numbers">
+                  {currentPage + 1} of {totalPages}
+                </span>
+              </div>
 
-            <button
-              onClick={goToNextPage}
-              disabled={currentPage === totalPages - 1}
-              className="pagination-button"
-            >
-              Next
-            </button>
-          </div>
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages - 1}
+                className="pagination-button"
+                title="Next page"
+              >
+                <span className="pagination-text">Next</span>
+                <FaChevronRight />
+              </button>
+            </div>
+          )}
         </div>
       );
     } else if (activeTab === "profile") {
@@ -178,14 +203,26 @@ function HallOfFamePage() {
 
       {/* Bottom menu with 3 items */}
       <div className="bottom-menu">
-        <div className="bottom-menu-item" onClick={() => setActiveTab("profile")}>
-          🪪 Profile
+        <div 
+          className={`bottom-menu-item ${activeTab === "profile" ? "active" : ""}`} 
+          onClick={() => setActiveTab("profile")}
+        >
+          <FaIdCard className="menu-icon" />
+          <span className="menu-text">Profile</span>
         </div>
-        <div className="bottom-menu-item" onClick={() => setActiveTab("hallOfFame")}>
-          🏆 Hall of Fame
+        <div 
+          className={`bottom-menu-item ${activeTab === "hallOfFame" ? "active" : ""}`} 
+          onClick={() => setActiveTab("hallOfFame")}
+        >
+          <FaTrophy className="menu-icon" />
+          <span className="menu-text">Hall of Fame</span>
         </div>
-        <div className="bottom-menu-item" onClick={() => setActiveTab("help")}>
-          ℹ️ Help Center
+        <div 
+          className={`bottom-menu-item ${activeTab === "help" ? "active" : ""}`} 
+          onClick={() => setActiveTab("help")}
+        >
+          <FaQuestionCircle className="menu-icon" />
+          <span className="menu-text">Help</span>
         </div>
       </div>
     </div>
