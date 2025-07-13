@@ -286,14 +286,15 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 0.5rem; /* Reduced from 2rem */
-  padding: 0.75rem;    /* Reduced from 1.5rem */
+  margin-top: 0; /* Reduced to 0 to be closer to members list */
+  padding: 0.5rem;    /* Reduced padding */
   font-size: 1rem;
   font-weight: 600;
   color: #1e293b;
-  padding-bottom: 1rem; /* Reduced from 2rem */
+  padding-bottom: 0.5rem; /* Reduced padding bottom */
   flex-wrap: nowrap;
   overflow-x: auto;
+  margin-bottom: 1rem; /* Add bottom margin to ensure space above navbar */
 }
 
 /* Pagination Buttons */
@@ -427,9 +428,10 @@ h1 {
   /* Mobile pagination - single line with smaller buttons */
   .pagination-controls {
     gap: 0.5rem;
-    padding: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin-top: 0.25rem;
+    padding: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
   }
 
   .pagination-button {
@@ -471,7 +473,8 @@ h1 {
   .pagination-controls {
     gap: 0.25rem;
     padding: 0.25rem;
-    margin-top: 0.1rem;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
   }
 
   .pagination-button {
