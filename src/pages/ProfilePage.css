@@ -55,6 +55,22 @@
   }
   
   .profile-content {
-    padding: 15px;
+    padding: 10px;
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 0 10px;
+  }
+  
+  .header-title {
+    font-size: 20px;
+  }
+  
+  .profile-content {
+    padding: 5px;
+    margin: 0 2px;
   }
 } 

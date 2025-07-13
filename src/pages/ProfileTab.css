@@ -1,7 +1,8 @@
 /* Professional Fame Community App - Profile Tab */
 
 .profile-container {
-  max-width: 1100px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.95);
@@ -44,7 +45,7 @@
 
 .profile-details {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
   background: #ffffff;
   border-radius: 16px;
   padding: 2rem;
@@ -132,21 +133,23 @@
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .profile-container {
-    padding: 1.5rem;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
   }
 
   .profile-header {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   .profile-details {
-    padding: 1.5rem;
+    padding: 1rem;
+    margin: 0 0.5rem;
   }
 
   .profile-field {
@@ -161,21 +164,23 @@
 
 @media (max-width: 480px) {
   .profile-container {
-    padding: 1rem;
-    margin: 0.5rem;
+    padding: 0.75rem;
+    margin: 0.25rem;
+    max-width: calc(100% - 0.5rem);
   }
 
   .profile-header {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .profile-avatar {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .profile-details {
-    padding: 1rem;
+    padding: 0.75rem;
+    margin: 0 0.25rem;
   }
 
   .profile-field {
