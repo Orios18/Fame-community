@@ -1,67 +1,191 @@
-/* Profile Container */
+/* Professional Fame Community App - Profile Tab */
+
 .profile-container {
-  width: 350px;
-  background: #2c2c2c;
-  color: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  border: 2px solid #66CFFF;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  margin: 20px auto;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Header */
 .profile-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-  letter-spacing: 1px;
-  background: rgba(0, 18, 92, 0);
-  padding: 5px 0;
-  border-radius: 8px;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
 }
 
-/* Profile Content */
 .profile-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 2rem;
 }
 
-/* Profile Avatar */
 .profile-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  border: 2px solid #000000;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-  background-color: white;
+  border: 4px solid #2563eb;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease;
 }
 
-/* Profile Details */
+.profile-avatar:hover {
+  transform: scale(1.05);
+}
+
 .profile-details {
-  flex: 1;
-  text-align: left;
-  padding-left: 5px;
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #e2e8f0;
 }
 
-/* Profile Field */
 .profile-field {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px;
-  border-radius: 6px;
-  margin: 4px 0;
-  font-size: 1rem;
-  font-weight: 500;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e293b;
 }
 
-/* Field Label */
+.profile-field:last-child {
+  border-bottom: none;
+}
+
 .field-label {
-  color: #66CFFF;
-  font-weight: bold;
+  font-weight: 600;
+  color: #64748b;
+  min-width: 100px;
+}
+
+.profile-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.error-message {
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.loading-message {
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.profile-text {
+  color: #64748b;
+  line-height: 1.6;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.profile-text strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Fame level styling */
+.profile-field:has(.field-label:contains("Fame")) {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #fbbf24;
+}
+
+.profile-field:has(.field-label:contains("Fame")) .field-label {
+  color: #92400e;
+  font-weight: 700;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .profile-header {
+    font-size: 2rem;
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-details {
+    padding: 1.5rem;
+  }
+
+  .profile-field {
+    font-size: 0.9rem;
+    padding: 0.75rem 0;
+  }
+
+  .field-label {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .profile-header {
+    font-size: 1.75rem;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-details {
+    padding: 1rem;
+  }
+
+  .profile-field {
+    font-size: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .field-label {
+    min-width: auto;
+  }
 }

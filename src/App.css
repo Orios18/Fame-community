@@ -1,148 +1,237 @@
 /*
-  Modern Telegram-inspired design.
-
-  1. We replaced the background with a subtle, pastel gradient.
-  2. The .page-container now has a glass-like (semi-transparent) background.
-  3. Buttons are more polished with small transitions and slight gradient.
+  Professional Fame Community App Design
+  Modern, clean design with improved visual hierarchy and user experience
 */
 
 :root {
-  /* Try a gradient-friendly background color scheme, or fallback. */
-  --tg-theme-bg-color: linear-gradient(135deg, #1f506c 0%, #6ca3c9 100%);
-  --tg-theme-text-color: #0B2B40;
-  --tg-theme-hint-color: #657786;
-  --tg-theme-destructive-text-color: #FF4E4E;
-  /* secondary background for cards or containers: glass-like color */
-  --tg-theme-secondary-bg-color: rgb(255, 255, 255);
+  /* Professional color palette */
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #3b82f6;
+  --secondary-color: #64748b;
+  --accent-color: #f59e0b;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  
+  /* Background colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-dark: #1e293b;
+  --bg-card: #ffffff;
+  
+  /* Text colors */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-light: #ffffff;
+  --text-muted: #94a3b8;
+  
+  /* Border and shadow */
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
 
-  /* Telegram brand color variations */
-  --tg-theme-button-color: #229ED9;
-  --tg-theme-button-text-color: #ffffff;
-  --tg-theme-button-hover-color: #1b89bf;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  /* Subtle gradient background using our var. If we need fallback: #E7F5FE */
-  background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  /* We might want a background-size for the gradient (optional) */
-  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
 }
 
 .app-wrapper {
-  /* The main container for the entire app. We rely on body’s gradient. */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: var(--spacing-md);
 }
 
 .page-container {
   max-width: 900px;
-  width: 90%;
-  margin: 2rem auto;
-  padding: 2rem;
-  text-align: center;
-  background: var(--tg-theme-secondary-bg-color);
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px); /* glass effect */
-  -webkit-backdrop-filter: blur(8px);
-  transition: box-shadow 0.3s ease;
+  width: 100%;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-xl);
+  background: var(--bg-card);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .page-container:hover {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
-/* Reusable button styles, more polished. */
+/* Professional button styles */
 .button-link {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.7rem 1.2rem;
-  background: linear-gradient(to right, #229ED9, #1b89bf);
-  color: var(--tg-theme-button-text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-light);
   text-decoration: none;
-  border-radius: 20px;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(34, 158, 217, 0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.button-link:hover::before {
+  left: 100%;
 }
 
 .button-link:hover {
-  background: linear-gradient(to right, #1b89bf, #1479a9);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .button-link:active {
   transform: translateY(0);
 }
 
-/* Additional utility classes below (optional) */
+/* Utility classes */
 .section {
-  margin: 2rem 0;
+  margin: var(--spacing-xl) 0;
   text-align: left;
 }
 
 .section h2 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
 }
 
 .nft-gallery {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
 }
 
 .nft-item {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 1rem;
-  border-radius: 8px;
+  background: var(--bg-card);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
 .nft-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 .news-list {
-  list-style-type: disc;
-  margin: 1rem 0 0 2rem;
+  list-style-type: none;
+  margin: var(--spacing-md) 0;
+  padding: 0;
+}
+
+.news-list li {
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .contact-form {
-  max-width: 400px;
-  margin: 1rem auto;
+  max-width: 500px;
+  margin: var(--spacing-lg) auto;
   text-align: left;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.3rem;
-  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--bg-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-wrapper {
+    padding: var(--spacing-sm);
+  }
+  
+  .page-container {
+    padding: var(--spacing-lg);
+    margin: var(--spacing-sm) auto;
+  }
+  
+  .nft-gallery {
+    grid-template-columns: 1fr;
+  }
 }
