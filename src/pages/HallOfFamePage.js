@@ -66,7 +66,7 @@ function HallOfFamePage() {
   };
 
   return (
-    <div className="hall-of-fame-container">
+    <div className="main-container">
       {/* Header Section */}
       <header className="header-section">
         <div className="header-content">

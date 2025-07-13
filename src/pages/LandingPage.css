@@ -1,9 +1,7 @@
 /* Professional Fame Community App - Landing Page */
 
+/* Use .main-container for all main page containers */
 .landing-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
   padding: 2rem;
   padding-bottom: 80px; /* Space for fixed navbar */
   background: rgba(255, 255, 255, 0.95);

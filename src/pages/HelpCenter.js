@@ -27,7 +27,7 @@ function HelpCenter() {
       </header>
 
       {/* Help Content */}
-      <div className="help-content">
+      <div className="main-container">
         <h1 className="help-title">
           <FaBookOpen className="help-title-icon" />
           Help Center

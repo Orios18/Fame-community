@@ -114,7 +114,7 @@ function LandingPage() {
   }
 
   return (
-    <div className="landing-container">
+    <div className="main-container">
 
       {/* Hero Section */}
       <section className="hero-section">

@@ -93,6 +93,23 @@ body {
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
+/* Main container for all pages */
+.main-container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .main-container {
+    max-width: 100vw;
+    padding: 8px;
+    margin: 0;
+  }
+}
+
 /* Professional button styles */
 .button-link {
   display: inline-flex;

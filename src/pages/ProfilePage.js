@@ -14,7 +14,7 @@ function ProfilePage() {
       </header>
 
       {/* Profile Content */}
-      <div className="profile-content">
+      <div className="main-container">
         <ProfileTab />
       </div>
     </div>

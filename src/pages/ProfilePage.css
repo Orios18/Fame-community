@@ -48,7 +48,7 @@
   box-sizing: border-box;
 }
 
-/* Responsive design */
+/* Use .main-container for all main page containers */
 @media (max-width: 768px) {
   .header-content {
     padding: 0 15px;
